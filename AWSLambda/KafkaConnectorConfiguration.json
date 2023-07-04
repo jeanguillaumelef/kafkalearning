@@ -1,0 +1,32 @@
+{
+    "name": "staging-awslambda-requesttagging",
+    "config": {
+        "connector.class": "io.confluent.connect.aws.lambda.AwsLambdaSinkConnector",
+        "tasks.max": "1",
+        "topics": "socket_visitorjourney_visitor_page_visit",
+        "aws.lambda.function.name": "arn:aws:lambda:eu-west-1:420021094716:function:CP-ClickstreamTagging-staging-tagRequest",
+        "aws.lambda.invocation.type": "sync",
+        "aws.lambda.batch.size": "1",
+        "behavior.on.error": "fail",
+        "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+        "value.converter.schemas.enable": "false",
+        "confluent.topic.bootstrap.servers": "bootstrapserver address",
+        "confluent.topic.replication.factor": "1",
+        "confluent.topic.ssl.endpoint.identification.algorithm": "https",
+        "confluent.topic.sasl.mechanism": "PLAIN",
+        "confluent.topic.request.timeout.ms": 20000,
+        "confluent.topic.retry.backoff.ms": 500,
+        "confluent.topic.sasl.jaas.config": "jaas config",
+        "confluent.topic.security.protocol": "SASL_SSL",
+        "aws.lambda.response.topic": "clickstream_tagging_request_tagged",
+        "aws.lambda.response.bootstrap.servers": "bootstrapserver address",
+        "aws.lambda.response.replication.factor": "1",
+        "aws.lambda.response.ssl.endpoint.identification.algorithm": "https",
+        "aws.lambda.response.sasl.mechanism": "PLAIN",
+        "aws.lambda.response.request.timeout.ms": 20000,
+        "aws.lambda.response.retry.backoff.ms": 500,
+        "aws.lambda.response.sasl.jaas.config": "jaas config",
+        "aws.lambda.response.security.protocol": "SASL_SSL"
+    }
+}

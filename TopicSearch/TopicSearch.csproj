@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Confluent.Kafka" Version="1.6.3" />
+    <PackageReference Include="Confluent.SchemaRegistry" Version="1.6.3" />
+    <PackageReference Include="Confluent.SchemaRegistry.Serdes.Avro" Version="1.6.3" />
+  </ItemGroup>
+
+</Project>

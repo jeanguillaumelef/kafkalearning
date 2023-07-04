@@ -1,0 +1,25 @@
+service: awslambda
+
+provider:
+  name: aws
+  runtime: dotnetcore2.1
+  stage: ${opt:stage, 'dev'}
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+      Resource: "*"
+  vpc:
+    securityGroupIds:
+      - ${file(serverless.env.yml):${opt:stage}.SECURITY_GROUP}
+    subnetIds:
+      - ${file(serverless.env.yml):${opt:stage}.SUBNET-ONE}
+      - ${file(serverless.env.yml):${opt:stage}.SUBNET-TWO}
+      - ${file(serverless.env.yml):${opt:stage}.SUBNET-THREE}
+package:
+  artifact: ../dist/awslambda.zip
+
+functions:
+  tagRequest:
+    handler: awslambda::awslambda.FunctionService::FunctionServiceHandler
